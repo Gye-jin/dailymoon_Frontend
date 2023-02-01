@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/api/login" element={<Login />} />
-        <Route path="/api/diarys/:user/:month" element={<Diary />} />
+        <Route path="/api/diarys" element={<Diary />} /> /*:user/:month"*/
         <Route path="/api/diarys/create" element={<DiaryCreate />} />
         <Route path="/api/diarys/:user/:date" element={<DiaryRead />} />
       </Routes>

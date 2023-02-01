@@ -1,0 +1,46 @@
+/* 전체 공통*/
+
+.background {
+  background-image: url(/imgs/starry-sky.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+/* 헤더 */
+.a {
+  text-align: center;
+}
+
+/* 메인 */
+.img_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.moon_wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 90vh;
+}
+.moon_img {
+  width: 350px;
+  height: 350px;
+}
+
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+}
+/* .btn btn-warning btn-lg {
+  font-size: 2.5em;
+  padding: 10px 20px;
+} */
+
+.calendar_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+#react-calendar {
+  width: 5000px;
+}
