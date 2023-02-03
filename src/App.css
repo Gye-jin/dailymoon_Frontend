@@ -1,11 +1,11 @@
 /* 전체 공통*/
-
+/* 
 .background {
-  background-image: url(/imgs/starry-sky.jpg);
+  background-image: url(/img/starry-sky.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
-}
+} */
 
 /* 헤더 */
 .a {
@@ -44,3 +44,19 @@
 #react-calendar {
   width: 5000px;
 }
+
+/* DiaryCreate 글작성 */
+h3 {
+  color: whitesmoke;
+}
+
+.feeling_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+/* .icon1 {
+  height: 20vh;
+  width: 20vh;
+}  */

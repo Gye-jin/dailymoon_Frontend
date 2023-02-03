@@ -2,10 +2,10 @@ import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
-import Login from "./api/Login";
-import Diary from "./api/Diary";
-import DiaryCreate from "./api/DiaryCreate";
-import DiaryRead from "./api/DiaryRead";
+import Login from "./pages/Login";
+import Diary from "./pages/Diary";
+import DiaryCreate from "./pages/DiaryCreate";
+import DiaryRead from "./pages/DiaryRead";
 
 function App() {
   return (
