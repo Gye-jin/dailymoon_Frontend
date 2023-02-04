@@ -1,11 +1,11 @@
 /* 전체 공통*/
-/* 
+
 .background {
-  background-image: url(/img/starry-sky.jpg);
+  background-image: url(E:\dailymoon\dailymoon\public\img\starry-sky.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
-} */
+}
 
 /* 헤더 */
 .a {
@@ -20,11 +20,12 @@
 .moon_wrapper {
   display: grid;
   place-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
+  margin-top: 5vh;
 }
 .moon_img {
-  width: 350px;
-  height: 350px;
+  width: 280px;
+  height: 280px;
 }
 
 .button_wrapper {
@@ -45,8 +46,34 @@
   width: 5000px;
 }
 
+/* login 로그인 */
+.login-button_wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+
+/* Diary달력보기 */
+.dailymoon_wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+.dailymoon_img {
+  height: 20vh;
+  width: 20vh;
+}
+
 /* DiaryCreate 글작성 */
+.tags_wrapper {
+  flex-direction: row;
+}
 h3 {
+  color: whitesmoke;
+}
+h5 {
   color: whitesmoke;
 }
 
@@ -55,8 +82,23 @@ h3 {
   justify-content: center;
   padding-top: 50px;
 }
-
-/* .icon1 {
-  height: 20vh;
-  width: 20vh;
-}  */
+.icon1 {
+  height: 15vh;
+  width: 15vh;
+}
+.icon2 {
+  height: 15vh;
+  width: 15vh;
+}
+.icon3 {
+  height: 15vh;
+  width: 15vh;
+}
+.icon4 {
+  height: 15vh;
+  width: 15vh;
+}
+.icon5 {
+  height: 15vh;
+  width: 15vh;
+}

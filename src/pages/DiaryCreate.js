@@ -13,6 +13,19 @@ function DiaryCreate() {
     setSelectedfeel(img);
   };
 
+  const ImageUpload = () => {
+    const [preview, setPreview] = useState(null);
+  
+    const handleChange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+  
+      reader.addEventListener('load', () => {
+        setPreview(reader.result);
+      });
+  
+      reader.readAsDataURL(file);
+    };
   // 게시글 작성하면 그 value를 인식하게 해주는 함수
   const changedairyContent = (e) => {
     setdairyContent(e.target.value);
@@ -74,19 +87,27 @@ function DiaryCreate() {
         />
         {/* <div className="icon1"></div> */}
       </div>
-
       <div className="simple-dairy_wrapper">
         <h3 className="simple-dairy">한줄일기</h3>
         <textarea
           onChange={changedairyContent}
           className="write-dairy"
-          placeholder="오늘은 어땠는지 한줄일기를 작성해주세요"
+          placeholder="어떤 하루를 보냈나요?"
           id="boardContent"
+        />
+      </div>
+      /br
+      <div className="tags_wrapper">
+        <h3 className="tags">#태그</h3>
+        <h5 className="tag1">#생일</h5>
+        <h5 className="tag1">#약속</h5>
+        <h5 className="tag1">#시험</h5>
+        <h5 className="tag1">#집콕</h5>
         />
       </div>
 
       <button className="writeBoard-write" onClick={sendDiaryWriteData}>
-        게시글 작성
+        작성 완료
       </button>
     </div>
   );

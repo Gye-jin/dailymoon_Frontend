@@ -8,7 +8,7 @@ function Main() {
       <Header />
       <div className="img_wrapper">
         <div className="moon_wrapper">
-          <img className="moon_img" src="../imgs/moon.png" />
+          <img className="moon_img" src="/img/moon.png" />
         </div>
       </div>
       <div className="button_wrapper">

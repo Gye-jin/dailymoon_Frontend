@@ -13,6 +13,13 @@ function Diary() {
       <div className="calendar_wrapper">
         <Calendar id="react-calendar" onChange={onChange} value={value} />
       </div>
+      <div className="dailymoon_wrapper">
+        <img
+          className="dailymoon_img"
+          src="/img/dailymoon.jpg"
+          onClick={() => (window.location.href = "/api/diarys/create")}
+        />
+      </div>
     </div>
   );
 }
