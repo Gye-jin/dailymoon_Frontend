@@ -16,7 +16,7 @@ function Diary() {
       <div className="dailymoon_wrapper">
         <img
           className="dailymoon_img"
-          src="/img/dailymoon.jpg"
+          src="/img/moon.jpg"
           onClick={() => (window.location.href = "/api/diarys/create")}
         />
       </div>
