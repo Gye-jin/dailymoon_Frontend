@@ -1,0 +1,242 @@
+/* 전체 공통*/
+.background {
+  background-image: url(E:\dailymoon\dailymoon\public\img\starry-sky.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 150vh;
+}
+
+/* Header헤더 */
+.a {
+  text-align: center;
+}
+
+/* 메인 */
+.img_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.moon_wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 80vh;
+  margin-top: 5vh;
+}
+.moon_img {
+  width: 280px;
+  height: 280px;
+}
+
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+}
+/* .btn btn-warning btn-lg {
+  font-size: 2.5em;
+  padding: 10px 20px;
+} */
+
+.calendar_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+#react-calendar {
+  width: 5000px;
+}
+
+/* login 로그인 */
+.login-button_wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+
+/* Diary달력보기 */
+.dailymoon_wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+.dailymoon_img {
+  height: 20vh;
+  width: 20vh;
+}
+
+/* DiaryCreate 글작성 */
+h3 {
+  color: whitesmoke;
+}
+h5 {
+  color: whitesmoke;
+}
+
+.feeling_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+.icon1 {
+  height: 15vh;
+  width: 15vh;
+  padding: 5px;
+  cursor: pointer;
+}
+.icon1.selected {
+  height: 18vh;
+  width: 18vh;
+  padding: 5px;
+}
+.icon2 {
+  height: 15vh;
+  width: 15vh;
+  padding: 5px;
+  cursor: pointer;
+}
+.icon2.selected {
+  height: 18vh;
+  width: 18vh;
+  padding: 5px;
+}
+.icon3 {
+  height: 15vh;
+  width: 15vh;
+  padding: 5px;
+  cursor: pointer;
+}
+.icon3.selected {
+  height: 18vh;
+  width: 18vh;
+  padding: 5px;
+}
+.icon4 {
+  height: 15vh;
+  width: 15vh;
+  padding: 5px;
+  cursor: pointer;
+}
+.icon4.selected {
+  height: 18vh;
+  width: 18vh;
+  padding: 5px;
+}
+.icon5 {
+  height: 15vh;
+  width: 15vh;
+  padding: 4px;
+  cursor: pointer;
+}
+.icon5.selected {
+  height: 18vh;
+  width: 18vh;
+  padding: 5px;
+}
+
+.simple-dairy_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+.one-dairy {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+textarea {
+  height: 20vh;
+  width: 60vh;
+  overflow: scroll;
+}
+.write-dairy {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.write-dairy::-webkit-scrollbar {
+  width: 5px;
+}
+.write-dairy::-webkit-scrollbar-thumb {
+  height: 25%;
+  background: #cbbcad;
+  border-radius: 10px;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+.tags_wrapper {
+  /* flex-direction: row; */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+.tag1 {
+  padding: 20px;
+  cursor: pointer;
+}
+.tag1.selected {
+  padding: 20px;
+  color: gold;
+  font-size: x-large;
+}
+.tag2 {
+  padding: 20px;
+  cursor: pointer;
+}
+.tag2.selected {
+  padding: 20px;
+  color: gold;
+  font-size: x-large;
+}
+.tag3 {
+  padding: 20px;
+  cursor: pointer;
+}
+.tag3.selected {
+  padding: 20px;
+  color: gold;
+  font-size: x-large;
+}
+.tag4 {
+  padding: 20px;
+  cursor: pointer;
+}
+.tag4.selected {
+  padding: 20px;
+  color: gold;
+  font-size: x-large;
+}
+
+.todayimg {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+.fileuploader_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.fileupload {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+  height: 30vh;
+}
+
+.fileuploader {
+  display: none;
+}
+
+.upload-dairy-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  font-size: x-large;
+  background-color: gold;
+}
