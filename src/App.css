@@ -58,11 +58,12 @@
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  align-items: center;
+  /* align-items: center; */
 }
 .dailymoon_img {
   height: 20vh;
   width: 20vh;
+  margin: 50px;
 }
 
 /* DiaryCreate 글작성 */
@@ -167,7 +168,7 @@ textarea {
 .tags {
   display: flex;
   justify-content: center;
-  padding-top: 30px;
+  padding-top: 37px;
 }
 .tags_wrapper {
   /* flex-direction: row; */

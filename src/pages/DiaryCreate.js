@@ -9,6 +9,7 @@ function DiaryCreate() {
   const [selectedfeel, setSelectedfeel] = useState(null);
   const [dairyContent, setdairyContent] = useState("");
   const [selectedtag, setSelectedtag] = useState([]);
+  const tagLimit = 3;
 
   const selectfeel = (img) => {
     setSelectedfeel(img);
@@ -16,9 +17,8 @@ function DiaryCreate() {
 
   const selectTag = (tag) => {
     if (selectedtag.includes(tag)) {
-      //이미 선택된 태그일 경우 취소
       setSelectedtag(selectedtag.filter((selected) => selected !== tag));
-    } else {
+    } else if (selectedtag.length < tagLimit) {
       setSelectedtag([...selectedtag, tag]);
     }
   };
@@ -115,7 +115,7 @@ function DiaryCreate() {
             onClick={() => selectfeel("5")}
           />
         </div>
-        <h3 className="one-dairy">한줄일기</h3>
+        <h3 className="one-dairy">✏️한줄일기</h3>
         <div className="simple-dairy_wrapper">
           <textarea
             onChange={changedairyContent}
@@ -125,7 +125,7 @@ function DiaryCreate() {
           />
         </div>
 
-        <h3 className="tags">#태그</h3>
+        <h3 className="tags">📌태그</h3>
         <div className="tags_wrapper">
           <h5
             className={`tag1 ${selectedtag.includes("1") ? "selected" : ""}`}
@@ -143,17 +143,41 @@ function DiaryCreate() {
             className={`tag3 ${selectedtag.includes("3") ? "selected" : ""}`}
             onClick={() => selectTag("3")}
           >
-            #시험
+            #친구
           </h5>
           <h5
-            className={`tag4 ${selectedtag.includes("4") ? "selected" : ""}`}
+            className={`tag3 ${selectedtag.includes("4") ? "selected" : ""}`}
             onClick={() => selectTag("4")}
+          >
+            #연인
+          </h5>
+          <h5
+            className={`tag3 ${selectedtag.includes("5") ? "selected" : ""}`}
+            onClick={() => selectTag("5")}
+          >
+            #가족
+          </h5>
+          <h5
+            className={`tag3 ${selectedtag.includes("6") ? "selected" : ""}`}
+            onClick={() => selectTag("6")}
+          >
+            #운동
+          </h5>
+          <h5
+            className={`tag3 ${selectedtag.includes("7") ? "selected" : ""}`}
+            onClick={() => selectTag("7")}
+          >
+            #공부
+          </h5>
+          <h5
+            className={`tag4 ${selectedtag.includes("8") ? "selected" : ""}`}
+            onClick={() => selectTag("8")}
           >
             #집콕
           </h5>
         </div>
 
-        <h3 className="todayimg">오늘의 사진</h3>
+        <h3 className="todayimg">✨오늘의 사진</h3>
         <div className="fileuploader_wrapper">
           {/*id값이 fileImg인 input태그 찾아오기 */}
           <label htmlFor="fileImg">
