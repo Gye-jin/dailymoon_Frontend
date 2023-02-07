@@ -31,10 +31,6 @@
   display: flex;
   justify-content: center;
 }
-/* .btn btn-warning btn-lg {
-  font-size: 2.5em;
-  padding: 10px 20px;
-} */
 
 .calendar_wrapper {
   display: flex;
@@ -51,6 +47,42 @@
   justify-content: center;
   min-height: 100vh;
   align-items: center;
+}
+/* 300이하 M-S */
+@media (max-width: 400px) {
+  .kakao_login_small {
+    display: inline;
+  }
+  .kakao_login_medium {
+    display: none;
+  }
+  .kakao_login_large {
+    display: none;
+  }
+}
+/* 300이상 L-S */
+@media (min-width: 401px) {
+  .kakao_login_small {
+    display: none;
+  }
+  .kakao_login_medium {
+    display: inline;
+  }
+  .kakao_login_large {
+    display: none;
+  }
+}
+/* 500이상 L-L */
+@media (min-width: 600px) {
+  .kakao_login_small {
+    display: none;
+  }
+  .kakao_login_medium {
+    display: none;
+  }
+  .kakao_login_large {
+    display: inline;
+  }
 }
 
 /* Diary달력보기 */

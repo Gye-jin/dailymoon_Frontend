@@ -7,9 +7,21 @@ function Login() {
     <div className="background">
       {/* <Header /> */}
       <div className="login-button_wrapper">
-        <a type="button" href="/api/diarys" className="btn btn-warning btn-lg">
-          카카오톡으로 간편 로그인하기
-        </a>
+        <img
+          src="/img/kakao_login_small.png"
+          className="kakao_login_small"
+          onClick="/api/diarys"
+        />
+        <img
+          src="/img/kakao_login_medium.png"
+          className="kakao_login_medium"
+          onClick="/api/diarys"
+        />
+        <img
+          src="/img/kakao_login_large.png"
+          className="kakao_login_large"
+          onClick="/api/diarys"
+        />
       </div>
     </div>
   );
