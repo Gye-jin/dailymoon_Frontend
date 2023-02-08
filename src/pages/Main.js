@@ -12,7 +12,7 @@ function Main() {
         </div>
       </div>
       <div className="button_wrapper">
-        <a type="button" href="/api/login" className="btn btn-warning btn-lg">
+        <a type="button" href="/api/kakao" className="btn btn-warning btn-lg">
           시작하기
         </a>
       </div>
