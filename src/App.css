@@ -1,9 +1,18 @@
-/* 전체 공통*/
-.background {
-  background-image: url(E:\dailymoon\dailymoon\public\img\starry-sky.jpg);
+/* 전체 공통(배경)*/
+body {
+  background-image: url(E:\Dev\33.project\dailymoon\dailymoon\dailymoon\public\img\background.jpg);
   background-size: cover;
   background-position: center;
-  height: 150vh;
+  max-height: 150vh;
+}
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 /* Header헤더 */
@@ -11,35 +20,15 @@
   text-align: center;
 }
 
-/* 메인 */
-.img_wrapper {
-  display: flex;
-  justify-content: center;
-}
-.moon_wrapper {
-  display: grid;
-  place-items: center;
-  min-height: 80vh;
-  margin-top: 5vh;
-}
-.moon_img {
-  width: 280px;
-  height: 280px;
-}
-
-.button_wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 /* login 로그인 */
 .login-button_wrapper {
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 35vh;
   align-items: center;
+  padding-bottom: 80px;
 }
-/* 300이하 M-S */
+
 @media (max-width: 400px) {
   .kakao_login_small {
     display: inline;
@@ -51,7 +40,7 @@
     display: none;
   }
 }
-/* 300이상 L-S */
+
 @media (min-width: 401px) {
   .kakao_login_small {
     display: none;
@@ -63,7 +52,7 @@
     display: none;
   }
 }
-/* 500이상 L-L */
+
 @media (min-width: 600px) {
   .kakao_login_small {
     display: none;
@@ -75,20 +64,83 @@
     display: inline;
   }
 }
+/* 메인 --> 로그인으로 병합*/
+.img_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.moon_wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  margin-top: 10vh;
+}
+.moon_img {
+  width: 230px;
+  height: 230px;
+}
+
+/* .button_wrapper {
+  display: flex;
+  justify-content: center;
+} */
+/* .startbtn {
+  background-color: gold;
+  padding: 20px;
+  margin: 20px 0 30px 0;
+  border-radius: 10px;
+  width: 150px;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.15ch;
+  font-size: large;
+  color: black;
+} */
 
 /* Diary달력보기 */
 .calendar_wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 130px;
+  margin-top: 80px;
+  min-height: 50vh;
 }
-.react-calendar {
-  width: 550px;
-  height: 400px;
-}
-
 .datecheck {
   color: aliceblue;
+}
+.readDiary_btn_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.readDiary_btn {
+  border-radius: 15px;
+  background-color: hsl(44, 90%, 75%);
+}
+/* 모달창 화면 */
+.modal_container {
+  width: 300px;
+  height: 350px;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  /* 중앙 배치 */
+  /* translate는 본인의 크기 기준으로 작동 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /*모달 디자인*/
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .dailymoon_wrapper {
@@ -100,7 +152,7 @@
 .dailymoon_img {
   height: 20vh;
   width: 20vh;
-  margin: 50px;
+  margin: 30px;
 }
 
 /* DiaryCreate 글작성 */
@@ -115,68 +167,68 @@ h5 {
   display: flex;
   justify-content: center;
   padding-top: 100px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 .icon1 {
-  height: 15vh;
-  width: 15vh;
-  padding: 5px;
+  height: 10vh;
+  width: 10vh;
+  padding: 3px;
   cursor: pointer;
 }
 .icon1.selected {
-  height: 18vh;
-  width: 18vh;
-  padding: 5px;
+  height: 12vh;
+  width: 12vh;
+  padding: 3px;
 }
 .icon2 {
-  height: 15vh;
-  width: 15vh;
-  padding: 5px;
+  height: 10vh;
+  width: 10vh;
+  padding: 3px;
   cursor: pointer;
 }
 .icon2.selected {
-  height: 18vh;
-  width: 18vh;
-  padding: 5px;
+  height: 12vh;
+  width: 12vh;
+  padding: 3px;
 }
 .icon3 {
-  height: 15vh;
-  width: 15vh;
-  padding: 5px;
+  height: 10vh;
+  width: 10vh;
+  padding: 3px;
   cursor: pointer;
 }
 .icon3.selected {
-  height: 18vh;
-  width: 18vh;
-  padding: 5px;
+  height: 12vh;
+  width: 12vh;
+  padding: 3px;
 }
 .icon4 {
-  height: 15vh;
-  width: 15vh;
-  padding: 5px;
+  height: 10vh;
+  width: 10vh;
+  padding: 3px;
   cursor: pointer;
 }
 .icon4.selected {
-  height: 18vh;
-  width: 18vh;
-  padding: 5px;
+  height: 12vh;
+  width: 12vh;
+  padding: 3px;
 }
 .icon5 {
-  height: 15vh;
-  width: 15vh;
-  padding: 4px;
+  height: 10vh;
+  width: 10vh;
+  padding: 2px;
   cursor: pointer;
 }
 .icon5.selected {
-  height: 18vh;
-  width: 18vh;
-  padding: 5px;
+  height: 12vh;
+  width: 12vh;
+  padding: 2px;
 }
 
 .simple-dairy_wrapper {
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 .one-dairy {
   display: flex;
@@ -186,7 +238,7 @@ h5 {
 
 textarea {
   height: 20vh;
-  width: 60vh;
+  width: 47vh;
   overflow: scroll;
 }
 .write-dairy {
@@ -205,13 +257,13 @@ textarea {
 .tags {
   display: flex;
   justify-content: center;
-  padding-top: 37px;
+  padding-top: 27px;
 }
 .tags_wrapper {
   /* flex-direction: row; */
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 .tag1 {
   padding: 20px;
@@ -263,6 +315,7 @@ textarea {
   display: flex;
   justify-content: center;
   padding-bottom: 50px;
+  margin-bottom: 50px;
   height: 30vh;
 }
 
@@ -277,4 +330,9 @@ textarea {
   height: 70px;
   font-size: x-large;
   background-color: gold;
+}
+
+.kakao_ll {
+  margin-top: 90px;
+  padding: 20px;
 }
