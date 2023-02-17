@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from "react";
+
+function Kakao() {
+  const [jwtToken, setJwtToken] = useState("");
+
+  useEffect(() => {
+    const jwtFromSession = sessionStorage.getItem("jwtToken");
+    if (jwtFromSession) {
+      setJwtToken(jwtFromSession);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    const jwt = "YOUR_JWT_TOKEN";
+    setJwtToken(jwt);
+    sessionStorage.setItem("jwtToken", jwt);
+  };
+
+  return <div></div>;
+}
+
+export default Kakao;

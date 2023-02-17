@@ -1,6 +1,6 @@
 /* 전체 공통(배경)*/
 body {
-  background-image: url(E:\Dev\33.project\dailymoon\dailymoon\dailymoon\public\img\background.jpg);
+  background-image: url(./background.jpg);
   background-size: cover;
   background-position: center;
   max-height: 150vh;
@@ -104,7 +104,20 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 80px;
-  min-height: 50vh;
+  min-height: 30vh;
+}
+.smile {
+  background-image: url(../public/img/kakao_login_large.png);
+  /* 왼측상단일부만 나옴->크기조정하기  */
+  height: 7px;
+  width: 7px;
+  /* background-color: green;
+  border-radius: 50%; */
+  display: flex;
+  margin-left: 13px;
+}
+p {
+  margin: 0;
 }
 .datecheck {
   color: aliceblue;
@@ -121,17 +134,14 @@ body {
 .modal_container {
   width: 300px;
   height: 350px;
-
   /* 최상단 위치 */
   z-index: 999;
-
   /* 중앙 배치 */
   /* translate는 본인의 크기 기준으로 작동 */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   /*모달 디자인*/
   background-color: gray;
   border: 1px solid black;
@@ -141,6 +151,9 @@ body {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+.clickdate {
+  color: #000;
 }
 
 .dailymoon_wrapper {
@@ -152,7 +165,10 @@ body {
 .dailymoon_img {
   height: 20vh;
   width: 20vh;
-  margin: 30px;
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -20%);
 }
 
 /* DiaryCreate 글작성 */
