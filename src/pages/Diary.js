@@ -5,32 +5,24 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Modal from "../components/Modal";
 import moment from "moment/moment";
-// import { parse } from "date-fns";
 
 function Diary() {
-  // const [selectedDate, setSelectedDate] = useState("");
-  const [date, setDate] = useState(new Date());
+  let [date, setDate] = useState(new Date());
   const [ModalOpen, setModalOpen] = useState(false);
 
   const handleReadDiary = (e) => {
-    // const date = new Date(e.target.getAttribute("date"));
-    // const date = selectedDate;
-    // if (isNaN(date)) {
-    //   console.error("Invalid date selected");
-    //   return;
-    // }
-    // setSelectedDate(date);
-    // const json = JSON.stringify(date);
     setModalOpen(true);
+    const date = new Date();
   };
-  // console.log(selectedDate); // 오늘날짜나옴
-  console.log(date.toDateString()); // 클릭한 날짜나옴
-  // -- 모달에{date.toDateString()} 출력하면 화면날아감--
-  // -- 이걸 변수에 저장해서 보내야하나-> 그래도 toString을 못받아줌
+  console.log(date.toDateString()); // 클릭한 날짜 출력확인
+  // date.toLocaleDateString()
   console.log(typeof date);
 
-  //백에서 받아온 표정데이터--- 종류별로 5가지 배열 만들기
-  const arr_smileDate = ["2023-02-11", "2023-02-04"];
+  // const month = date.getMonth();
+  //백에서 받아온 표정데이터
+  // [[일기날짜:날짜, 기분:기분], [일기날짜:날짜, 기분:기분]]
+  // --종류별로 5가지 배열 만들기
+  const arr_GoodDate = ["2023-02-11", "2023-02-04", "2023-04-04"];
 
   return (
     <div className="background">
@@ -42,16 +34,15 @@ function Diary() {
           onChange={setDate}
           value={date}
           tileContent={({ date }) => {
-            // 날짜 타일에 컨텐츠 추가하기 (html 태그)
-            // 추가할 html 태그를 변수 초기화
-            let html = [];
-            // 현재 날짜가 post 작성한(기분별 날짜배열) 날짜 배열(mark)에 있다면, dot div 추가
+            // 날짜 타일에 컨텐츠 추가(html 태그)
+            let html = []; // 추가할 html 태그를 변수 초기화
+            // 날짜가 post 작성한 기분별 날짜 배열에 있다면, 배열에 맞는 div 추가
             if ("2023-02-17" === moment(date).format("YYYY-MM-DD")) {
               html.push(<div className="cal_1heart">🥰</div>);
             } else if (
-              arr_smileDate.find((x) => x === moment(date).format("YYYY-MM-DD"))
+              arr_GoodDate.find((x) => x === moment(date).format("YYYY-MM-DD"))
             ) {
-              html.push(<div className="cal_2smile">😊</div>);
+              html.push(<div className="cal_good">😊</div>);
             } else if ("2023-02-19" === moment(date).format("YYYY-MM-DD")) {
               html.push(<div className="cal_3soso">😐</div>);
             } else if ("2023-02-12" === moment(date).format("YYYY-MM-DD")) {
@@ -86,7 +77,7 @@ function Diary() {
           일기확인
         </button>
         {/* 버튼을 눌렀을때(true가 되었을때)=> modal 컴포넌트 렌더링 */}
-        {ModalOpen && <Modal setModalOpen={setModalOpen} />}
+        {ModalOpen && <Modal setModalOpen={setModalOpen} date={date} />}
       </div>
       <div className="dailymoon_wrapper">
         <img
