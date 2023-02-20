@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ForPostDiaryWrite } from "../Api/WriteData";
+import { ForPostDiaryWrite, ForPostDiaryAll } from "../Api/PostWriteData";
 import "../App.css";
 import Header from "../components/Header";
 
@@ -47,26 +47,45 @@ function DiaryCreate() {
   // 작성완료 버튼 -> 작성내용을 백에 보내주는 함수
   const sendDiaryData = (e) => {
     e.preventDefault();
-    if (selectedfeel && Object.keys(selectedfeel).length > 0) {
-      let DiaryWriteData = new FormData();
-      // DiaryWriteData.append("sessionId", userSession);
-      DiaryWriteData.append("feeling", selectedfeel);
-      DiaryWriteData.append("dairyContent", dairyContent);
-      DiaryWriteData.append("selectedtag", selectedtag);
-      DiaryWriteData.append("fileName", fileImage);
-      ForPostDiaryWrite(DiaryWriteData);
-      for (var key of DiaryWriteData.keys()) {
-        console.log(key);
+    if (selectedfeel && Object.values(selectedfeel).length > 0) {
+      if (fileImage === DefaultImg) {
+        let DiaryWriteData = new FormData();
+        DiaryWriteData.append("feeling", selectedfeel);
+        DiaryWriteData.append("dairyContent", dairyContent);
+        ForPostDiaryWrite(DiaryWriteData);
+        for (var key of DiaryWriteData.keys()) {
+          console.log(key);
+        }
+        for (var value of DiaryWriteData.values()) {
+          console.log(value);
+        }
+      } else {
+        let DiaryWriteAllData = new FormData();
+        DiaryWriteAllData.append("feeling", selectedfeel);
+        DiaryWriteAllData.append("dairyContent", dairyContent);
+        DiaryWriteAllData.append("fileName", fileImage);
+        ForPostDiaryAll(DiaryWriteAllData);
+        for (var key of DiaryWriteAllData.keys()) {
+          console.log(key);
+        }
+        for (var value of DiaryWriteAllData.values()) {
+          console.log(`All ${value}`);
+        }
       }
 
-      for (var value of DiaryWriteData.values()) {
-        console.log(value);
-      }
+      //키,값 확인용 for문
+      // for (var key of DiaryWriteData.keys()) {
+      //   console.log(key);
+      // }
+      // for (var value of DiaryWriteData.values()) {
+      //   console.log(value);
+      // }
     } else {
       console.log("기분선택 필수!");
       alert("오늘의 기분이모티콘을 선택해주세요");
     }
   };
+
   return (
     <div className="background">
       <Header />
