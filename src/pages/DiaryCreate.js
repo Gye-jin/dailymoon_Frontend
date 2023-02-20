@@ -53,33 +53,25 @@ function DiaryCreate() {
         DiaryWriteData.append("feeling", selectedfeel);
         DiaryWriteData.append("dairyContent", dairyContent);
         ForPostDiaryWrite(DiaryWriteData);
-        for (var key of DiaryWriteData.keys()) {
-          console.log(key);
-        }
-        for (var value of DiaryWriteData.values()) {
-          console.log(value);
-        }
+        // for (var key of DiaryWriteData.keys()) {
+        //   console.log(key);
+        // }
+        // for (var value of DiaryWriteData.values()) {
+        //   console.log(value);
+        // }
       } else {
         let DiaryWriteAllData = new FormData();
         DiaryWriteAllData.append("feeling", selectedfeel);
         DiaryWriteAllData.append("dairyContent", dairyContent);
         DiaryWriteAllData.append("fileName", fileImage);
         ForPostDiaryAll(DiaryWriteAllData);
-        for (var key of DiaryWriteAllData.keys()) {
-          console.log(key);
-        }
-        for (var value of DiaryWriteAllData.values()) {
-          console.log(`All ${value}`);
-        }
+        // for (var key of DiaryWriteAllData.keys()) {
+        //   console.log(key);
+        // }
+        // for (var value of DiaryWriteAllData.values()) {
+        //   console.log(`All ${value}`);
+        // }
       }
-
-      //키,값 확인용 for문
-      // for (var key of DiaryWriteData.keys()) {
-      //   console.log(key);
-      // }
-      // for (var value of DiaryWriteData.values()) {
-      //   console.log(value);
-      // }
     } else {
       console.log("기분선택 필수!");
       alert("오늘의 기분이모티콘을 선택해주세요");

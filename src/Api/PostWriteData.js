@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// 기분이모티콘("1"), 한줄일기("text"), 태그("기념일"), 이미지, 유저세션을 백에 보내는 함수
+// 이미지파일이 있는 경우, 백에 보내는 함수
 export function ForPostDiaryAll(DiaryWriteAllData) {
   const PostDiaryAll = async (DiaryWriteAllData) => {
     await axios
@@ -24,6 +24,7 @@ export function ForPostDiaryAll(DiaryWriteAllData) {
   PostDiaryAll(DiaryWriteAllData);
 }
 
+//이미지파일이 없는 경우, 기분이모티콘("1"), 한줄일기("text"),유저세션을 백에 보내는 함수
 export function ForPostDiaryWrite(DiaryWriteData) {
   const PostDiaryWrite = async (DiaryWriteData) => {
     await axios
