@@ -16,7 +16,7 @@ const ReadDiaryData = async (date) => {
 export default ReadDiaryData;
 
 // 달력에 표정(feeling)가져오기
-export const GetFeelData = async (month) => {
+export const GetFeelData = async () => {
   const feel = await axios.get(
     `http://localhost:8080/api/diarys/read/all/2659410591`
   );
