@@ -20,6 +20,22 @@ body {
   text-align: center;
 }
 
+/* 메인*/
+.img_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.moon_wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  margin-top: 10vh;
+}
+.moon_img {
+  width: 230px;
+  height: 230px;
+}
+
 /* login 로그인 */
 .login-button_wrapper {
   display: flex;
@@ -64,22 +80,6 @@ body {
     display: inline;
   }
 }
-/* 메인 --> 로그인으로 병합*/
-.img_wrapper {
-  display: flex;
-  justify-content: center;
-}
-.moon_wrapper {
-  display: grid;
-  place-items: center;
-  min-height: 60vh;
-  margin-top: 10vh;
-}
-.moon_img {
-  width: 230px;
-  height: 230px;
-}
-
 /* .button_wrapper {
   display: flex;
   justify-content: center;
@@ -98,6 +98,14 @@ body {
   font-size: large;
   color: black;
 } */
+
+/*kakao redirect페이지*/
+.let_service {
+  border-radius: 10px;
+  background-color: aliceblue;
+  font-size: 50px;
+  text-decoration: none;
+}
 
 /* Diary달력보기 */
 .calendar_wrapper {
@@ -144,7 +152,7 @@ p {
   transform: translate(-50%, -50%);
   /*모달 디자인*/
   background-color: rgb(212, 212, 203);
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   border-radius: 8px;
 }
 .deleteBtn {

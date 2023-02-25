@@ -1,10 +1,8 @@
-// // 보류
-// 로그인 완료 페이지
+// 로그인 후 Redirect페이지
 import React, { useState, useEffect } from "react";
 import { HEADER_STRING, TOKEN_PREFIX } from "../Api/JwtProperties";
 import axios from "axios";
 import Header from "../components/Header";
-import GetJwtToken from "../Api/GetJwtToken";
 import Cookies from "js-cookie";
 
 function Kakao() {
@@ -17,15 +15,18 @@ function Kakao() {
       .get("http://localhost:8080/api/kakao", { params: { code } })
       .then((response) => {
         console.log(response.headers);
-        let jwt = response.headers[HEADER_STRING];
-        Cookies.set("jwt", jwt, { expires: 0.0069 });
+        console.log(response.headers.authorization);
+        let jwt = response.headers.authorization;
+        Cookies.set("jwt", jwt, { expires: 0.0069 }); //10분
         // sessionStorage.setItem("jwt", jwt);
       });
   }
 
   return (
     <>
-      <a href="/api/diarys">버튼</a>
+      <a className="let_service" href="/api/diarys">
+        Let's together Dailymoon!
+      </a>
     </>
   );
 }
