@@ -1,21 +1,28 @@
-import { useState } from "react";
-import { ForPostDiaryWrite } from "../Api/PostWriteData";
+import React, { useState } from "react";
+import { ForPostDiaryWrite, ForPostDiaryAll } from "../Api/PostWriteData";
 import "../App.css";
 import Header from "../components/Header";
 
-function DiaryCreate() {
-  const date = new Date();
+function DiaryUpdate() {
   // 한줄일기 input
-  const userId = sessionStorage.getItem("jwt");
-  console.log(`세션id:${userId}`);
-  const [selectedfeel, setSelectedfeel] = useState("");
+  // const [sessionId, setsessionId] = useState("");
+  const [selectedfeel, setSelectedfeel] = useState([]);
   const [dairyContent, setdairyContent] = useState("");
+  // const [selectedtag, setSelectedtag] = useState([]);
+  const feelLimit = 3;
   const DefaultImg = "/img/defalutImg.png";
   const [fileImage, setFileImage] = useState(DefaultImg);
 
   const selectfeel = (img) => {
     setSelectedfeel(img);
   };
+  //   const selectfeel = (img) => {
+  //     if (selectfeel.includes(img)) {
+  //       setSelectedtag(selectedtag.filter((selected) => selected !== tag));
+  //     } else if (selectedtag.length < tagLimit) {
+  //       setSelectedtag([...selectedtag, tag]);
+  //     }
+  //   };
 
   // 사진 선택 + 사진 미리보기
   const addImage = (e) => {
@@ -27,6 +34,7 @@ function DiaryCreate() {
     const fileImageURL = URL.createObjectURL(selectedImage[0]);
 
     setFileImage(fileImageURL);
+    // setSelectImage(selectedImage[0]);
   };
 
   // 게시글 작성하면 그 value를 인식하게 해주는 함수
@@ -39,18 +47,29 @@ function DiaryCreate() {
   const sendDiaryData = (e) => {
     e.preventDefault();
     if (selectedfeel && Object.values(selectedfeel).length > 0) {
-      let DiaryWriteData = new FormData();
-      DiaryWriteData.append("feeling", selectedfeel);
-      DiaryWriteData.append("dairyContent", dairyContent);
-      DiaryWriteData.append("fileName", fileImage);
-      DiaryWriteData.append("userId", userId);
-      DiaryWriteData.append("date", date);
-      ForPostDiaryWrite(DiaryWriteData);
-      for (var key of DiaryWriteData.keys()) {
-        console.log(key);
-      }
-      for (var value of DiaryWriteData.values()) {
-        console.log(value);
+      if (fileImage === DefaultImg) {
+        let DiaryWriteData = new FormData();
+        DiaryWriteData.append("feeling", selectedfeel);
+        DiaryWriteData.append("dairyContent", dairyContent);
+        ForPostDiaryWrite(DiaryWriteData);
+        // for (var key of DiaryWriteData.keys()) {
+        //   console.log(key);
+        // }
+        // for (var value of DiaryWriteData.values()) {
+        //   console.log(value);
+        // }
+      } else {
+        let DiaryWriteAllData = new FormData();
+        DiaryWriteAllData.append("feeling", selectedfeel);
+        DiaryWriteAllData.append("dairyContent", dairyContent);
+        DiaryWriteAllData.append("fileName", fileImage);
+        ForPostDiaryAll(DiaryWriteAllData);
+        // for (var key of DiaryWriteAllData.keys()) {
+        //   console.log(key);
+        // }
+        // for (var value of DiaryWriteAllData.values()) {
+        //   console.log(`All ${value}`);
+        // }
       }
     } else {
       console.log("기분선택 필수!");
@@ -64,34 +83,34 @@ function DiaryCreate() {
       <div className="diarywrite">
         <div className="feeling_wrapper">
           <img
-            className={`icon1 ${selectedfeel === "Great" ? "selected" : ""}`}
+            className={`icon1 ${selectedfeel === "1" ? "selected" : ""}`}
             alt="heartsmile"
             src="/img/heartsmile.png"
-            onClick={() => selectfeel("Great")}
+            onClick={() => selectfeel("1")}
           />
           <img
-            className={`icon2 ${selectedfeel === "Good" ? "selected" : ""}`}
+            className={`icon2 ${selectedfeel === "2" ? "selected" : ""}`}
             alt="smile"
             src="/img/smile.png"
-            onClick={() => selectfeel("Good")}
+            onClick={() => selectfeel("2")}
           />
           <img
-            className={`icon3 ${selectedfeel === "Fine" ? "selected" : ""}`}
+            className={`icon3 ${selectedfeel === "3" ? "selected" : ""}`}
             alt="soso"
             src="/img/soso.png"
-            onClick={() => selectfeel("Fine")}
+            onClick={() => selectfeel("3")}
           />
           <img
-            className={`icon4 ${selectedfeel === "Bad" ? "selected" : ""}`}
+            className={`icon4 ${selectedfeel === "4" ? "selected" : ""}`}
             alt="notgood"
             src="/img/notgood.png"
-            onClick={() => selectfeel("Bad")}
+            onClick={() => selectfeel("4")}
           />
           <img
-            className={`icon5 ${selectedfeel === "Worst" ? "selected" : ""}`}
+            className={`icon5 ${selectedfeel === "5" ? "selected" : ""}`}
             alt="worst"
             src="/img/worst.png"
-            onClick={() => selectfeel("Worst")}
+            onClick={() => selectfeel("5")}
           />
         </div>
         <h3 className="one-dairy">✏️한줄일기</h3>
@@ -134,4 +153,4 @@ function DiaryCreate() {
   );
 }
 
-export default DiaryCreate;
+export default DiaryUpdate;
