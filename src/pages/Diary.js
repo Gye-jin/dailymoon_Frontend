@@ -9,8 +9,6 @@ import { GetFeelData, Posthandletest } from "../Api/GetDiaryData";
 
 function Diary() {
   let [date, setDate] = useState(new Date());
-  const userId = 2659410591; //로그인후 받을 토큰 예시
-
   const [ModalOpen, setModalOpen] = useState(false);
   const [groupData, setGroupData] = useState({});
 
@@ -27,10 +25,6 @@ function Diary() {
     };
     getCalenData();
   }, []);
-
-  const handletest = (e) => {
-    Posthandletest();
-  };
 
   const handleReadDiary = (e) => {
     setModalOpen(true);
@@ -127,9 +121,6 @@ function Diary() {
       <div className="readDiary_btn_wrapper">
         <button className="readDiary_btn" onClick={handleReadDiary}>
           일기확인
-        </button>
-        <button className="test_btn" onClick={handletest}>
-          test
         </button>
         {/* 버튼을 눌렀을때(true가 되었을때)=> modal 컴포넌트 렌더링 */}
         {ModalOpen && <Modal setModalOpen={setModalOpen} date={date} />}

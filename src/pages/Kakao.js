@@ -17,8 +17,8 @@ function Kakao() {
         console.log(response.headers);
         console.log(response.headers.authorization);
         let jwt = response.headers.authorization;
-        Cookies.set("jwt", jwt, { expires: 0.0069 }); //10분
-        // sessionStorage.setItem("jwt", jwt);
+        // Cookies.set("jwt", jwt, { expires: 0.0069 }); //10분
+        sessionStorage.setItem("jwt", jwt);
       });
   }
 

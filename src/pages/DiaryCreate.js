@@ -1,30 +1,21 @@
 import { useState } from "react";
-import { ForPostDiaryWrite, ForPostDiaryAll } from "../Api/PostWriteData";
+import { ForPostDiaryWrite } from "../Api/PostWriteData";
 import "../App.css";
 import Header from "../components/Header";
 
 function DiaryCreate() {
   const date = new Date();
   // 한줄일기 input
-  // const [sessionId, setsessionId] = useState("");
-  const [selectedfeel, setSelectedfeel] = useState(null);
+  const userId = sessionStorage.getItem("jwt");
+  console.log(`세션id:${userId}`);
+  const [selectedfeel, setSelectedfeel] = useState("");
   const [dairyContent, setdairyContent] = useState("");
-  // const [selectedtag, setSelectedtag] = useState([]);
-  // const tagLimit = 3;
   const DefaultImg = "/img/defalutImg.png";
   const [fileImage, setFileImage] = useState(DefaultImg);
 
   const selectfeel = (img) => {
     setSelectedfeel(img);
   };
-
-  // const selectTag = (tag) => {
-  //   if (selectedtag.includes(tag)) {
-  //     setSelectedtag(selectedtag.filter((selected) => selected !== tag));
-  //   } else if (selectedtag.length < tagLimit) {
-  //     setSelectedtag([...selectedtag, tag]);
-  //   }
-  // };
 
   // 사진 선택 + 사진 미리보기
   const addImage = (e) => {
@@ -36,7 +27,6 @@ function DiaryCreate() {
     const fileImageURL = URL.createObjectURL(selectedImage[0]);
 
     setFileImage(fileImageURL);
-    // setSelectImage(selectedImage[0]);
   };
 
   // 게시글 작성하면 그 value를 인식하게 해주는 함수
@@ -49,29 +39,18 @@ function DiaryCreate() {
   const sendDiaryData = (e) => {
     e.preventDefault();
     if (selectedfeel && Object.values(selectedfeel).length > 0) {
-      if (fileImage === DefaultImg) {
-        let DiaryWriteData = new FormData();
-        DiaryWriteData.append("feeling", selectedfeel);
-        DiaryWriteData.append("dairyContent", dairyContent);
-        ForPostDiaryWrite(DiaryWriteData);
-        // for (var key of DiaryWriteData.keys()) {
-        //   console.log(key);
-        // }
-        // for (var value of DiaryWriteData.values()) {
-        //   console.log(value);
-        // }
-      } else {
-        let DiaryWriteAllData = new FormData();
-        DiaryWriteAllData.append("feeling", selectedfeel);
-        DiaryWriteAllData.append("dairyContent", dairyContent);
-        DiaryWriteAllData.append("fileName", fileImage);
-        ForPostDiaryAll(DiaryWriteAllData);
-        // for (var key of DiaryWriteAllData.keys()) {
-        //   console.log(key);
-        // }
-        // for (var value of DiaryWriteAllData.values()) {
-        //   console.log(`All ${value}`);
-        // }
+      let DiaryWriteData = new FormData();
+      DiaryWriteData.append("feeling", selectedfeel);
+      DiaryWriteData.append("dairyContent", dairyContent);
+      DiaryWriteData.append("fileName", fileImage);
+      DiaryWriteData.append("userId", userId);
+      DiaryWriteData.append("date", date);
+      ForPostDiaryWrite(DiaryWriteData);
+      for (var key of DiaryWriteData.keys()) {
+        console.log(key);
+      }
+      for (var value of DiaryWriteData.values()) {
+        console.log(value);
       }
     } else {
       console.log("기분선택 필수!");
@@ -85,34 +64,34 @@ function DiaryCreate() {
       <div className="diarywrite">
         <div className="feeling_wrapper">
           <img
-            className={`icon1 ${selectedfeel === "1" ? "selected" : ""}`}
+            className={`icon1 ${selectedfeel === "Great" ? "selected" : ""}`}
             alt="heartsmile"
             src="/img/heartsmile.png"
-            onClick={() => selectfeel("1")}
+            onClick={() => selectfeel("Great")}
           />
           <img
-            className={`icon2 ${selectedfeel === "2" ? "selected" : ""}`}
+            className={`icon2 ${selectedfeel === "Good" ? "selected" : ""}`}
             alt="smile"
             src="/img/smile.png"
-            onClick={() => selectfeel("2")}
+            onClick={() => selectfeel("Good")}
           />
           <img
-            className={`icon3 ${selectedfeel === "3" ? "selected" : ""}`}
+            className={`icon3 ${selectedfeel === "Fine" ? "selected" : ""}`}
             alt="soso"
             src="/img/soso.png"
-            onClick={() => selectfeel("3")}
+            onClick={() => selectfeel("Fine")}
           />
           <img
-            className={`icon4 ${selectedfeel === "4" ? "selected" : ""}`}
+            className={`icon4 ${selectedfeel === "Bad" ? "selected" : ""}`}
             alt="notgood"
             src="/img/notgood.png"
-            onClick={() => selectfeel("4")}
+            onClick={() => selectfeel("Bad")}
           />
           <img
-            className={`icon5 ${selectedfeel === "5" ? "selected" : ""}`}
+            className={`icon5 ${selectedfeel === "Worst" ? "selected" : ""}`}
             alt="worst"
             src="/img/worst.png"
-            onClick={() => selectfeel("5")}
+            onClick={() => selectfeel("Worst")}
           />
         </div>
         <h3 className="one-dairy">✏️한줄일기</h3>
@@ -124,82 +103,6 @@ function DiaryCreate() {
             id="boardContent"
           />
         </div>
-
-        {/* {/* <h3 className="tags">📌태그</h3> */}
-        {/* <div className="tags_wrapper">
-          <span>
-            <h5
-              className={`tag1 ${
-                selectedtag.includes("기념일") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("기념일")}
-            >
-              #기념일
-            </h5>
-            <h5
-              className={`tag2 ${
-                selectedtag.includes("친구") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("친구")}
-            >
-              #친구
-            </h5>
-          </span>
-          <span>
-            <h5
-              className={`tag3 ${
-                selectedtag.includes("약속") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("약속")}
-            >
-              #약속
-            </h5>
-            <h5
-              className={`tag3 ${
-                selectedtag.includes("연인") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("연인")}
-            >
-              #연인
-            </h5>
-          </span>
-          <span>
-            <h5
-              className={`tag3 ${
-                selectedtag.includes("운동") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("운동")}
-            >
-              #운동
-            </h5>
-            <h5
-              className={`tag3 ${
-                selectedtag.includes("가족") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("가족")}
-            >
-              #가족
-            </h5>
-          </span>
-          <span>
-            <h5
-              className={`tag3 ${
-                selectedtag.includes("공부") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("공부")}
-            >
-              #공부
-            </h5>
-            <h5
-              className={`tag4 ${
-                selectedtag.includes("집콕") ? "selected" : ""
-              }`}
-              onClick={() => selectTag("집콕")}
-            >
-              #집콕
-            </h5>
-          </span>
-        </div> */}
 
         <h3 className="todayimg">✨오늘의 사진</h3>
         <div className="fileuploader_wrapper">

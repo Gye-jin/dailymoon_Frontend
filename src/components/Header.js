@@ -13,7 +13,7 @@ export default function Header() {
           fontWeight: "630",
           letterSpacing: "0.8PX",
         }}
-        href="/"
+        href="/api/diarys"
       >
         🌕 DAILY MOON 🌕
       </a>
