@@ -15,6 +15,7 @@ function Diary() {
   useEffect(() => {
     const getCalenData = async () => {
       const data = await GetFeelData();
+      console.log(`dataaa:${data}`);
       const newData = data.reduce((groups, item) => {
         const group = groups[item.feeling] || [];
         group.push(item.date);
@@ -25,6 +26,8 @@ function Diary() {
     };
     getCalenData();
   }, []);
+  console.log(groupData);
+  // console.log(response.data);
 
   const handleReadDiary = (e) => {
     setModalOpen(true);
@@ -67,45 +70,45 @@ function Diary() {
           formatDay={(locale, date) => moment(date).format("DD")} //'일' 없이 숫자만 출력
           onChange={setDate}
           value={date}
-          // tileContent={({ date }) => {
-          //   // 날짜 타일에 컨텐츠 추가(html 태그)
-          //   let html = []; // 추가할 html 태그를 변수 초기화
-          //   // 날짜가 post 작성한 기분별 날짜 배열에 있다면, 배열에 맞는 div 추가
-          //   if (
-          //     groupData.Great.find(
-          //       (x) => x === moment(date).format("YYYY-MM-DD")
-          //     )
-          //   ) {
-          //     html.push(<div className="best">🥰</div>);
-          //   } else if (
-          //     groupData.Good.find(
-          //       (x) => x === moment(date).format("YYYY-MM-DD")
-          //     )
-          //   ) {
-          //     html.push(<div className="cal_good">😊</div>);
-          //   } else if (
-          //     groupData.Fine.find(
-          //       (x) => x === moment(date).format("YYYY-MM-DD")
-          //     )
-          //   ) {
-          //     html.push(<div className="cal_soso">😐</div>);
-          //   } else if (
-          //     groupData.Bad.find((x) => x === moment(date).format("YYYY-MM-DD"))
-          //   ) {
-          //     html.push(<div className="cal_bad">😞</div>);
-          //   } else if (
-          //     groupData.Worst.find(
-          //       (x) => x === moment(date).format("YYYY-MM-DD")
-          //     )
-          //   ) {
-          //     html.push(<div className="cal_cry">🥲</div>);
-          //   }
-          //   return (
-          //     <>
-          //       <div>{html}</div>
-          //   </>
-          // );
-          //   }}
+          tileContent={({ date }) => {
+            // 날짜 타일에 컨텐츠 추가(html 태그)
+            let html = []; // 추가할 html 태그를 변수 초기화
+            // 날짜가 post 작성한 기분별 날짜 배열에 있다면, 배열에 맞는 div 추가
+            if (
+              groupData.Great.find(
+                (x) => x === moment(date).format("YYYY-MM-DD")
+              )
+            ) {
+              html.push(<div className="best">🥰</div>);
+            } else if (
+              groupData.Good.find(
+                (x) => x === moment(date).format("YYYY-MM-DD")
+              )
+            ) {
+              html.push(<div className="cal_good">😊</div>);
+            } else if (
+              groupData.Fine.find(
+                (x) => x === moment(date).format("YYYY-MM-DD")
+              )
+            ) {
+              html.push(<div className="cal_soso">😐</div>);
+            } else if (
+              groupData.Bad.find((x) => x === moment(date).format("YYYY-MM-DD"))
+            ) {
+              html.push(<div className="cal_bad">😞</div>);
+            } else if (
+              groupData.Worst.find(
+                (x) => x === moment(date).format("YYYY-MM-DD")
+              )
+            ) {
+              html.push(<div className="cal_cry">🥲</div>);
+            }
+            return (
+              <>
+                <div>{html}</div>
+              </>
+            );
+          }}
         />
       </div>
       <p className="text-center">

@@ -13,14 +13,11 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/api/kakao" element={<Kakao />} />
         <Route path="/api/diarys" element={<Diary />} /> /*:user/:date"*/
-        <Route
-          path="/api/diarys/create/2659410591/${date}"
-          element={<DiaryCreate />}
-        />
-        <Route
+        <Route path="/api/diarys/create" element={<DiaryCreate />} />
+        {/* <Route
           path="/api/diarys/update/${date}/${userId}"
           element={<DiaryUpdate />}
-        />
+        /> */}
       </Routes>
     </div>
   );
