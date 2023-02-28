@@ -6,8 +6,8 @@ import Header from "../components/Header";
 function DiaryCreate() {
   const date = new Date();
   // 한줄일기 input
-  const userId = sessionStorage.getItem("jwt");
-  console.log(`세션id:${userId}`);
+  const userId = localStorage.getItem("jwt");
+  // console.log(`세션id:${userId}`);
   const [selectedfeel, setSelectedfeel] = useState("");
   const [dairyContent, setdairyContent] = useState("");
   const DefaultImg = "/img/defalutImg.png";
@@ -41,10 +41,9 @@ function DiaryCreate() {
     if (selectedfeel && Object.values(selectedfeel).length > 0) {
       let DiaryWriteData = new FormData();
       DiaryWriteData.append("feeling", selectedfeel);
-      DiaryWriteData.append("dairyContent", dairyContent);
-      DiaryWriteData.append("fileName", fileImage);
-      DiaryWriteData.append("userId", userId);
-      DiaryWriteData.append("date", date);
+      DiaryWriteData.append("detail", dairyContent);
+      DiaryWriteData.append("fileList", fileImage);
+      // DiaryWriteData.append("userId", userId);
       ForPostDiaryWrite(DiaryWriteData);
       for (var key of DiaryWriteData.keys()) {
         console.log(key);
