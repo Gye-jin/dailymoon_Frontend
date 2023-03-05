@@ -43,7 +43,6 @@ function DiaryCreate() {
       DiaryWriteData.append("feeling", selectedfeel);
       DiaryWriteData.append("detail", dairyContent);
       DiaryWriteData.append("fileList", fileImage);
-      // DiaryWriteData.append("userId", userId);
       ForPostDiaryWrite(DiaryWriteData);
       for (var key of DiaryWriteData.keys()) {
         console.log(key);

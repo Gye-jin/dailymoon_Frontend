@@ -107,6 +107,17 @@ body {
   text-decoration: none;
 }
 
+/* Diaryall */
+.DiaryBoardFeeling {
+  color: aliceblue;
+}
+.DiaryBoardDetail {
+  color: aliceblue;
+}
+.DiaryBoardImage {
+  width: 50%;
+  height: auto;
+}
 /* Diary달력보기 */
 .calendar_wrapper {
   display: flex;
@@ -114,6 +125,7 @@ body {
   margin-top: 80px;
   min-height: 30vh;
 }
+
 .smile {
   background-image: url(../public/img/kakao_login_large.png);
   /* 왼측상단일부만 나옴->크기조정하기  */
