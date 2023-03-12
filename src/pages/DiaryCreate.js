@@ -44,6 +44,8 @@ function DiaryCreate() {
       DiaryWriteData.append("detail", dairyContent);
       DiaryWriteData.append("fileList", fileImage);
       ForPostDiaryWrite(DiaryWriteData);
+      alert("오늘일기 작성완료!");
+      window.location.href = "/api/diaryall";
       for (var key of DiaryWriteData.keys()) {
         console.log(key);
       }
