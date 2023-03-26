@@ -1,28 +1,26 @@
 import "../App.css";
 import Header from "../components/Header";
+
 // import { GetFeelData } from "../Api/GetDiaryData";
-import {
-  ReadDiaryData,
-  postDeleteDiaryData,
-  AccessDiaryDetail,
-} from "../Api/GetDiaryData";
+import { ReadDiaryData, postDeleteDiaryData } from "../Api/GetDiaryData";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import DiaryCreate from "./DiaryCreate";
+import { Link, useParams } from "react-router-dom";
 import confirm from "antd/es/modal/confirm";
 
 function Diaryall() {
   //백에서 가져온 전체게시물 담기
   const [DiaryBoard, setDiaryBoard] = useState([]);
   const id = localStorage.getItem("jwt");
-  const { diaryNo, feeling, date, detail, files } = useParams();
+  // const { diaryNo, feeling, date, detail, files } = useParams();
 
-  //초기렌더링- 게시물 출력
+  //초기렌더링([]의존성제거)- 게시물 출력
   useEffect(() => {
     const response = ReadDiaryData(id);
-    response.then((data) => setDiaryBoard(data));
+    response.then((res) => setDiaryBoard(res));
+    // console.log(data);
     console.log(response);
-    console.log({ diaryNo: diaryNo });
+    console.log(response.date);
+    // console.log(response[0].date);///
   }, []);
 
   const deleteDiaryData = (diaryNo) => {
@@ -31,12 +29,9 @@ function Diaryall() {
       let deleteDiaryData = new FormData();
       deleteDiaryData.append("diaryNo", diaryNo);
       deleteDiaryData.append("id", id);
-      deleteDiaryData.append("feeling", feeling);
-      deleteDiaryData.append("date", date);
-      deleteDiaryData.append("detail", detail);
-      deleteDiaryData.append("files", files);
       postDeleteDiaryData(diaryNo).then((response) => {
         console.log(response);
+        console.log(diaryNo);
       });
     } else {
       alert("삭제요청이 취소되었습니다");
@@ -51,15 +46,17 @@ function Diaryall() {
             DiaryBoard.map((diary) => (
               <div key={diary.date} className="DiaryBoard">
                 <div className="DiaryBoardHeader">
-                  {/* <h3 className="DiaryBoard_No">{diary.diaryNo}</h3> */}
                   <h3
                     className="DiaryBoard_DATE"
                     onClick={() =>
-                      (window.location.href = "/api/diarys/${date}")
+                      (window.location.href = `/api/diary/${diary.date}`)
                     }
                   >
                     {diary.date}
                   </h3>
+                  {/* <Link to={"/api/diary/" + diary.date}>
+                    {diary.date}상세보기
+                  </Link> */}
                   <button
                     className="diary-delete"
                     onClick={() => deleteDiaryData()}

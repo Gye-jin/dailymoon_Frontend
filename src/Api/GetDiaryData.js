@@ -6,16 +6,23 @@ import moment from "moment/moment";
 // //모든 axios요청에 jwt 포함
 // axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
-const userId = localStorage.getItem("jwt");
+const id = localStorage.getItem("jwt");
 
 // 작성한 일기내용 가져오기(날짜별)
-// export const ReadDiaryData = async (date) => {
-//   //   const sessionId = sessionStorage.getItem("sessionId");
-//   const response = await axios.get(
-//     `http://localhost:8080/api/diarys/read/${moment(date).format("YYYY-MM-DD")}`
-//   );
-//   return response.data;
-// };
+export const ReadClickDiaryData = async (date) => {
+  const token = localStorage.getItem("jwt");
+  const response = await axios.get(
+    // `http://localhost:8080/api/diarys/read/2023-02-27`,
+    `http://localhost:8080/api/diarys/read/${date}`,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: token,
+      },
+    }
+  );
+  return response.data;
+};
 
 // 일기 내용 가져오기
 export const ReadDiaryData = async () => {
@@ -34,12 +41,13 @@ export const ReadDiaryData = async () => {
 
 //일기 삭제
 export const postDeleteDiaryData = async (diaryNo) => {
-  const token = localStorage.getItem("jwt");
-  console.log(diaryNo);
+  const id = localStorage.getItem("jwt");
   await axios
     .delete(`http://localhost:8080/api/diarys/delete`, {
-      data: diaryNo,
-      headers: { "Content-Type": "application/json", Authorization: token },
+      data: {
+        diaryNo: diaryNo,
+      },
+      headers: { "Content-Type": "application/json", Authorization: id },
     })
     .then((response) => {
       response.data
